@@ -3,13 +3,20 @@ pipeline {
 
     environment {
         REPO_URL = 'https://github.com/Ayotunde-Orintunsin/Building-a-AWS-Infrastructure-for-a-BMI-Cal.-Web-Application-using-Terraform-Jenkins-and-Ansible.git'
+        BRANCH_NAME = 'main'
     }
 
     stages {
         stage('Clone Repository') {
             steps {
-                echo 'Cloning repository...'
-                git url: "${REPO_URL}"
+                script {
+                    try {
+                        echo 'Cloning repository...'
+                        git branch: "${BRANCH_NAME}", url: "${REPO_URL}"
+                    } catch (Exception e) {
+                        error "Failed to clone repository. Please check the repository URL and branch name. Error: ${e.message}"
+                    }
+                }
             }
         }
 
