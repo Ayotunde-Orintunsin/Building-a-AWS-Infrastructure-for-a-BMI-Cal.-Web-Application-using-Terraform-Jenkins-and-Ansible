@@ -65,7 +65,7 @@ variable "availability_zones" {
 variable "ami" {
   description = "The AMI ID for the instances"
   type        = string
-  default     = "ami-0bc91b6bca18d10c5"  
+  default     = "ami-053a617c6207ecc7b"  
 }
 
 # Instance type for EC2 instances
